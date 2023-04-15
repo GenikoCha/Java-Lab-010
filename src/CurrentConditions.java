@@ -6,30 +6,31 @@
  * @since Version 1.0
  *
  */
-public class CurrentConditions {
+public class CurrentConditions implements Display {
 
+    private WeatherStation ws;
     private float temperature;
     private float humidity;
     private float pressure;
-    private WeatherStation ws;
 
-    public CurrentConditions(WeatherStation weatherStation) {
-
-        this.ws = weatherStation;
-        update();
-
+    public CurrentConditions(WeatherStation ws) {
+        this.ws = ws;
     }
 
+    @Override
     public void update() {
 
-        temperature = ws.getTemperature();
-        humidity = ws.getHumidity();
-        pressure = ws.getPressure();
+        this.temperature = ws.getTemperature();
+        this.humidity = ws.getHumidity();
+        this.pressure = ws.getPressure();
         display();
 
     }
 
+    @Override
     public void display() {
-        System.out.printf("Current conditions are: %.2f F degrees, %.2f%% humidity, and %.2f in pressure\n", temperature, humidity, pressure);
+        System.out.printf("Temperature: %f.2\tHumidity: %f.2\tPressure: %f.2\n", this.temperature, this.humidity, this.pressure);
     }
+
+
 }

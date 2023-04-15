@@ -12,21 +12,19 @@ public class ForecastDisplay implements Display {
     private float lastPressure;
     private WeatherStation ws;
 
-    public ForecastDisplay(WeatherStation weatherStation) {
-
-        this.ws = weatherStation;
-        update();
-
+    public ForecastDisplay(WeatherStation ws) {
+        this.ws = ws;
     }
 
+    @Override
     public void update() {
-
         lastPressure = currentPressure;
         currentPressure = ws.getPressure();
         display();
 
     }
 
+    @Override
     public void display() {
 
         System.out.print("Forecast: ");

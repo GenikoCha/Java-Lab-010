@@ -15,13 +15,12 @@ public class StatisticsDisplay implements Display {
     private WeatherStation ws;
 
 
-    public StatisticsDisplay(WeatherStation weatherStation) {
-
-        this.ws = weatherStation;
-        update();
+    public StatisticsDisplay(WeatherStation ws) {
+        this.ws = ws;
 
     }
 
+    @Override
     public void update() {
 
         float temperature = ws.getTemperature();
@@ -33,6 +32,7 @@ public class StatisticsDisplay implements Display {
 
     }
 
+    @Override
     public void display() {
 
         float averageTemp = tempRunningTotal / numReadings;
